@@ -1,11 +1,10 @@
-# Workflow for deploying Flutter web to GitHub Pages
 name: Deploy Flutter Web to GitHub Pages
 
 on:
   push:
     branches:
-      - master  # Trigger workflow when pushing to the 'main' branch
-  workflow_dispatch:  # Allow manual trigger of the workflow
+      - master
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -14,34 +13,31 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04  # Use a specific Ubuntu version to avoid future changes
+    runs-on: ubuntu-22.04
 
     steps:
-      # Step 1: Check out the repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up Flutter
       - name: Setup Flutter
         uses: flutter-actions/setup-flutter@v2
         with:
-          version: '3.25.5'  # Correct input key for Flutter version
-          channel: stable  # Set Flutter channel to stable
+          version: '3.13.8' # Replace with a valid version
+          channel: stable
 
-      # Step 3: Install Flutter dependencies
       - name: Install Flutter Dependencies
         run: flutter pub get
 
-      # Step 4: Build the Flutter web project
       - name: Build Flutter Web
         run: flutter build web --release
 
-      # Step 5: Upload the web build directory as an artifact
+      - name: Verify Build Directory
+        run: ls -la build/web
+
       - name: Upload Web Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './build/web'
 
-      # Step 6: Deploy the artifact to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4

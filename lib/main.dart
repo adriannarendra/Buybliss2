@@ -18,7 +18,7 @@ Future<void> main() async {
   bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
   runApp(
     DevicePreview(  // Wrap your app with DevicePreview
-      enabled: true,  // Enable it only in debug mode
+      enabled: true,  
       builder: (context) => MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => ThemeProvider()),

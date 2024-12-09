@@ -1,4 +1,0 @@
-#Mon Dec 09 09:40:42 WIB 2024
-base.0=C\:\\Users\\Adrian Narendra\\Desktop\\FlutterProject\\buybliss2\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
